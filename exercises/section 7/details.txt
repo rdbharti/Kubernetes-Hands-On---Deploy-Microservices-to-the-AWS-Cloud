@@ -1,0 +1,7 @@
+image : richardchesterwood/k8s-fleetman-queue
+tag: release1
+
+admin port : 8161
+user:pass : admin/admin
+
+expose : 31232

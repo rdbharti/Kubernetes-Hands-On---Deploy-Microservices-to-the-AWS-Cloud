@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  labels:
+    app: webapp
+spec:
+  minReadySeconds: 30
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+  template: # Template for PODS
+    metadata:
+      # name: webapp # Now since PODs are managed by ReplicaSet we don't need to mention a name
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
+
+# Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleet-webapp
+  labels:
+    app: webapp
+spec:
+  type: NodePort
+  selector:
+    app: webapp
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      nodePort: 31231
