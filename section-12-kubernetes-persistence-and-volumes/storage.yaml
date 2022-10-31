@@ -22,7 +22,7 @@ metadata:
   name: local-storage
 spec:
   storageClassName: mylocalstorage
-  capcity:
+  capacity:
     storage: 20Gi
   accessModes:
     - ReadWriteOnce

@@ -25,16 +25,18 @@ spec:
               mountPath: /data/db # path in container where data is stored
       volumes:
         - name: mongo-persistent-storage
+
           # hostPath:
-            # path: /mnt/some/directory-structure
-            # type: DirectoryOrCreate
-            # We have hardcoded the mounth path of host.
-            # we need to configure a pointer of HOW we want the mount to be implemented
-            # So, when we move from one cloud provideer to another then we just have to make changes to the congiguration
-            # to which we are referencing, rather than changing in every single pod
-            # its called PersistentVolumeClaim pvc
-            persistentVolumeClaim:
-              claimName: mongo-pvc # this is reference to PVC
+          #   path: /mnt/some/directory-structure
+          #   type: DirectoryOrCreate
+          #   We have hardcoded the mounth path of host.
+          #   we need to configure a pointer of HOW we want the mount to be implemented
+          #   So, when we move from one cloud provideer to another then we just have to make changes to the congiguration
+          #   to which we are referencing, rather than changing in every single pod
+          #   its called PersistentVolumeClaim pvc.
+
+          persistentVolumeClaim:
+            claimName: mongo-pvc # this is reference to PVC
 
 ---
 # Services
