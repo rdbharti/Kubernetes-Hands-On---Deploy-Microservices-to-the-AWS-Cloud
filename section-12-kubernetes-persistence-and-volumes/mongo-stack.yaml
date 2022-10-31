@@ -25,7 +25,7 @@ spec:
               mountPath: /data/db # path in container where data is stored
       volumes:
         - name: mongo-persistent-storage
-          hostPath:
+          # hostPath:
             # path: /mnt/some/directory-structure
             # type: DirectoryOrCreate
             # We have hardcoded the mounth path of host.
