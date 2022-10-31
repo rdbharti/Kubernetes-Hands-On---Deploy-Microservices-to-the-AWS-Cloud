@@ -8,5 +8,7 @@ ____New Feature:__ vehicle tracking shows the hostory of each vehicle
 ### Changes for the new requirement
 1. update position tracker image to release:3
 2. setup a mongodb database pod (fleetman-mongodb)
+    we will pull image from official mongo page from "hub.docker.com"
+    image : mongo:3.6.5-jessie
 
 {In Production we need to make sure Database is deployed first}
