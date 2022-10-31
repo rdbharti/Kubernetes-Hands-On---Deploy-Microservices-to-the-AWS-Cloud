@@ -12,3 +12,8 @@ ____New Feature:__ vehicle tracking shows the hostory of each vehicle
     image : mongo:3.6.5-jessie
 
 {In Production we need to make sure Database is deployed first}
+
+## Persistent Volume
+----------------------
+In the mongo-stack.yaml in Deployment, inside the container we will map a folder inside the container to a folder in the host machine.
+We will use the TAG "volumeMounts"
