@@ -22,7 +22,12 @@ spec:
           image: mongo:3.6.5-jessie
           volumeMounts:
             - name: mongo-persistent-storage
-              mountPath: /data/db
+              mountPath: /data/db # path in container where data is stored
+      volumes:
+        - name: mongo-persistent-storage
+          hostPath:
+            path: /mnt/some/directory-structure
+            type: DirectoryOrCreate
 
 ---
 # Services
