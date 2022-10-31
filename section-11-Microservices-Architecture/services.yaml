@@ -1,0 +1,41 @@
+# Service WEBAPP
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleet-webapp
+  labels:
+    app: webapp
+spec:
+  type: NodePort
+  selector:
+    app: webapp
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      nodePort: 30080
+
+---
+# Service QUEUE
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: fleetman-queue
+
+spec:
+  type: NodePort
+
+  selector:
+    app: queue
+  
+  ports:
+    - name: http
+      port: 8161
+      targetPort: 8161
+      nodePort: 30010
+
+    - name: endpoint
+      port: 61616
+      targetPort: 61616
