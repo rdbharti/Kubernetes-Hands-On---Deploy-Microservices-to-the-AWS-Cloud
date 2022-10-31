@@ -42,3 +42,12 @@ also remove nodePort ip.
 It needs an environment variable
 
 SPRING_PROFILES_ACTIVE = production-microservice
+
+## Front-End
+------------
+**- Image:** richardchesterwood/k8s-fleetman-webapp-angular:release1
+**- Ports: 80** we can expose port 80 to outside world
+
+It needs an environment variable
+
+SPRING_PROFILES_ACTIVE = production-microservice
