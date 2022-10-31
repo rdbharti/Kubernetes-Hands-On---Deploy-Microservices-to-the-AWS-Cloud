@@ -20,3 +20,20 @@ spec:
       containers:
         - name: mongodb
           image: mongo:3.6.5-jessie
+
+---
+# Services
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-mongodb
+
+spec:
+  type: ClusterIP
+  selector:
+    app: mongodb
+  ports:
+    - name: mongoport
+      port: 27017
+      targetPort: 27017
