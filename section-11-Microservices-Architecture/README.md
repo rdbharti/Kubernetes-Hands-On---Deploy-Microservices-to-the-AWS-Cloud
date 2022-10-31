@@ -31,3 +31,14 @@ SPRING_PROFILES_ACTIVE = production-microservice
 **- Rest Interface:** /vehicle/{vehicle-name}
     eg: /vehicle/City Truck
         /vehicle/City%20Truck
+
+## API - Gateway
+------------
+**- Image:** richardchesterwood/k8s-fleetman-api-gateway:release1
+**- Ports: 8080** we can expose port 8080 to test with (/)
+Once verified change type=NodePort to ClusterIP and 
+also remove nodePort ip.
+
+It needs an environment variable
+
+SPRING_PROFILES_ACTIVE = production-microservice
