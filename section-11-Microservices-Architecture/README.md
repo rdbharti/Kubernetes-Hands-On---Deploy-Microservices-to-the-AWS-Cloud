@@ -16,3 +16,13 @@
 It needs an environment variable
 
 SPRING_PROFILES_ACTIVE = production-microservice
+
+## Position Tracker
+----------
+**- Image:** richardchesterwood/k8s-fleetman-position-tracker:release1
+
+**- Ports: 8080** we can expose port 8080 to test the REST inteface, after testing we will remove the exposed port for security reasons
+
+It needs an environment variable
+
+SPRING_PROFILES_ACTIVE = production-microservice
