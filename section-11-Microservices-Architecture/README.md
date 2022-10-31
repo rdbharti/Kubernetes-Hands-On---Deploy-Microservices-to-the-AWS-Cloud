@@ -21,8 +21,13 @@ SPRING_PROFILES_ACTIVE = production-microservice
 ----------
 **- Image:** richardchesterwood/k8s-fleetman-position-tracker:release1
 
-**- Ports: 8080** we can expose port 8080 to test the REST inteface, after testing we will remove the exposed port for security reasons
+**- Ports: 8080** we can expose port 8080 to test the REST inteface, after testing we will remove the exposed port for all for security reasons.
+So we change the "spec.type=ClusterIP" and remove the spec.ports.nodePort number
 
 It needs an environment variable
 
 SPRING_PROFILES_ACTIVE = production-microservice
+
+**- Rest Interface:** /vehicle/{vehicle-name}
+    eg: /vehicle/City Truck
+        /vehicle/City%20Truck
