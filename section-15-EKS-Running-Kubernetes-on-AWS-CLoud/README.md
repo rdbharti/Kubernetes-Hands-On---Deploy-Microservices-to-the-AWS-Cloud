@@ -39,7 +39,7 @@ aws-cli/2.0.8 Python/3.7.5 Windows/10 botocore/2.0.0dev12
 
 ### Step-01-03: Configure AWS Command Line using Security Credentials
 - Go to AWS Management Console --> Services --> IAM
-- Select the IAM User: kalyan 
+- Select the IAM User: ranadurlabh 
 - **Important Note:** Use only IAM user to generate **Security Credentials**. Never ever use Root User. (Highly not recommended)
 - Click on **Security credentials** tab
 - Click on **Create access key**
@@ -93,7 +93,7 @@ curl -o kubectl.exe https://amazon-eks.s3.us-west-2.amazonaws.com/1.16.8/2020-04
 ```
 - Update the system **Path** environment variable 
 ```
-C:\Users\KALYAN\Documents\kubectlbinary
+C:\Users\ranadurlabh\Documents\kubectlbinary
 ```
 - Verify the kubectl client version
 ```
