@@ -19,10 +19,7 @@ IAM Access Required
                 "ssm:GetParameter",
                 "ssm:GetParameters"
             ],
-            "Resource": [
-                "arn:aws:ssm:*:<account_id>:parameter/aws/*",
-                "arn:aws:ssm:*::parameter/aws/*"
-            ],
+            "Resource": "*",
             "Effect": "Allow"
         },
         {
