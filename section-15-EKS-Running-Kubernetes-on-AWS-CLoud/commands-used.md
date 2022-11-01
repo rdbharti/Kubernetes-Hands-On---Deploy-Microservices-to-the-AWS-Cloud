@@ -3,7 +3,9 @@ IAM Access Required
 - AmazonEC2FullAccess (AWS Managed Policy) 
 - AWSCloudFormationFullAccess (AWS Managed Policy) 
 - EksAllAccess
-    ---json
+
+    
+```json
     {
     "Version": "2012-10-17",
     "Statement": [
@@ -41,10 +43,10 @@ IAM Access Required
     ]
 }
 
-    ---
+```
 
 - IamLimitedAccess
----json 
+```json 
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -115,7 +117,7 @@ IAM Access Required
     ]
 }
 
----
+```
 - AWSCloudFormationFullAccess
 
 
