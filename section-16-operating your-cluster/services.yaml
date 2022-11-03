@@ -24,7 +24,7 @@ metadata:
   name: fleetman-queue
 
 spec:
-  type: CLusterIP
+  type: ClusterIP
 
   selector:
     app: queue
