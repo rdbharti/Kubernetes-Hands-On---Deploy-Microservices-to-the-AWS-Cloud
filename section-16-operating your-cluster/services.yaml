@@ -6,14 +6,13 @@ metadata:
   labels:
     app: webapp
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: webapp
   ports:
     - name: http
       port: 80
       targetPort: 80
-      nodePort: 30080
 
 ---
 # Service QUEUE
@@ -25,7 +24,7 @@ metadata:
   name: fleetman-queue
 
 spec:
-  type: NodePort
+  type: CLusterIP
 
   selector:
     app: queue
@@ -34,7 +33,6 @@ spec:
     - name: http
       port: 8161
       targetPort: 8161
-      nodePort: 30010
 
     - name: endpoint
       port: 61616
@@ -59,7 +57,6 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-      # nodePort: 30020
 
 
 ---
@@ -81,4 +78,3 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-      # nodePort: 30020
