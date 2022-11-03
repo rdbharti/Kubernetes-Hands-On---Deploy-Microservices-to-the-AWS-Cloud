@@ -121,4 +121,4 @@ IAM Access Required
 Start your cluster!
 ----------------------
 
-eksctl create cluster --name fleetman --nodes-min=3
+eksctl create cluster --name fleetman --nodes-min=3 --version=1.22 {//There is some issue StorageVolume in version 1.23}
