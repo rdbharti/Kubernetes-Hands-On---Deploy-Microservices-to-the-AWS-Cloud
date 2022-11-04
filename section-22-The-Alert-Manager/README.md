@@ -28,3 +28,11 @@ kubectl get secret alertmanager-XXXX-DDD -n monitoring -o yaml
 ```
 
 We will first delete that secret and replace it with our secret
+
+```yaml
+# Delete Secret
+kubectl delete secret alertmanager-XXXX-DDD -n monitoring
+
+# Delete Secret
+kubectl create secret generic --from-file=alertmanager.yaml alertmanager-XXXX-DDD -n monitoring
+```
