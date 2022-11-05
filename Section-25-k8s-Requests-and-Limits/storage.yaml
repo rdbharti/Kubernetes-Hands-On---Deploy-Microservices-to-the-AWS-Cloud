@@ -5,22 +5,28 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongo-pvc
 spec:
-  storageClassName: cloud-ssd # This links pvc to a pv/StorageClass
+  storageClassName: mylocalstorage # This links pvc to a pv
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 7Gi
+      storage: 20Gi
 
 ---
 # PersistentVolume : Its used to define whether its a local directory or EBS or Azure
 # HOW do we want it implemented?
 
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: cloud-ssd # This name will be referenced in PVC
-provisioner: kubernetes.io/aws-ebs
-parameters:
-  type: gp2
+  name: local-storage
+spec:
+  storageClassName: mylocalstorage
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/some/new-directory-structure
+    type: DirectoryOrCreate
 
