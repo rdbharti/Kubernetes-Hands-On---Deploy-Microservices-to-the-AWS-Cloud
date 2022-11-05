@@ -23,6 +23,7 @@ spec:
           resources:
             requests:
               memory: 300Mi # 1Mi = 1024kb; 1M = 1000K
+              cpu: 1
 
 ---
 # Deployment Position Simulator
