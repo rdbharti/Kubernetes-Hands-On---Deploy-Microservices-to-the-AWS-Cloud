@@ -23,6 +23,11 @@ spec:
           volumeMounts:
             - name: mongo-persistent-storage
               mountPath: /data/db # path in container where data is stored
+
+          resources:
+            requests:
+              memory: 500Mi # 1Mi = 1024kb; 1M = 1000K
+              cpu: 500m
       volumes:
         - name: mongo-persistent-storage
 
