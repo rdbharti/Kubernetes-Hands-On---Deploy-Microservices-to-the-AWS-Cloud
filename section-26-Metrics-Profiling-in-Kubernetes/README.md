@@ -66,3 +66,48 @@ OUTPUT
 |-----------------------------|----------|--------------|--------------------------------|
 
 
+### Enable ADDONS
+
+```
+minikube addons enable <addon-name>
+
+minikube addons enable metrics-server
+```
+
+### Check if the pod started
+
+```
+kubectl get po -n kube-system
+```
+
+### Check memory and CPU usage of pods
+
+```
+kubectl top pod
+
+kubectl top nodes
+```
+The above command displays the actual usage of the pods
+
+OUTPUTS
+```
+kubectl top pods
+
+NAME                                CPU(cores)   MEMORY(bytes)
+api-gateway-565c8985fb-58f27        23m          708Mi
+mongodb-65f4f67c6d-zb8t4            92m          179Mi
+position-simulator-f9f545ff-6zww5   47m          577Mi
+position-tracker-7fc85bb948-ng4nh   28m          678Mi
+queue-5768444bf6-vh2kl              54m          288Mi
+webapp-5f98779747-8fbmd             0m           9Mi
+webapp-5f98779747-bjrf8             0m           8Mi
+webapp-5f98779747-lwllw             0m           9Mi
+```
+
+```
+kubectl top node
+
+NAME       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+minikube   684m         17%    3384Mi          58%
+
+```
