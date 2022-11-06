@@ -111,3 +111,21 @@ NAME       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
 minikube   684m         17%    3384Mi          58%
 
 ```
+
+### To view the metrics in a Dashboard
+
+There is an addon in kubernetes for dashboard
+
+```
+# Enable dashboard
+
+minikube addons enable dashboard
+
+# View dashboard pod running status
+
+kubectl get pod -n kube-system
+
+# Access the dashboard
+
+minikube dashboard
+```
