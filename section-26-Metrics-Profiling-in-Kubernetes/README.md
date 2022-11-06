@@ -51,7 +51,7 @@ OUTPUT
 | kubevirt                    | minikube | disabled     | 3rd party (KubeVirt)           |
 | logviewer                   | minikube | disabled     | 3rd party (unknown)            |
 | metallb                     | minikube | disabled     | 3rd party (MetalLB)            |
-| **metrics-server**              | **minikube** | **disabled**     | **Kubernetes**                     |
+|<span style="color:green"> **metrics-server** </span>             | <span style="color:green"> **minikube** </span> | <span style="color:green"> **disabled** </span>     | <span style="color:green"> **Kubernetes** </span>                |
 | nvidia-driver-installer     | minikube | disabled     | Google                         |
 | nvidia-gpu-device-plugin    | minikube | disabled     | 3rd party (Nvidia)             |
 | olm                         | minikube | disabled     | 3rd party (Operator Framework) |
