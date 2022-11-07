@@ -1,6 +1,6 @@
 # READINESS PROBE
 -----
-
+- Readiness Probes allows containers to start/bootstrap and when its ready then only traffic is routed to the pod(s)
 - Its specified under spec.containers[].
 
 ```yaml
