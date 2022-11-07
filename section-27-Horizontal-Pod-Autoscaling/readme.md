@@ -42,3 +42,33 @@ kubectl get hpa
 NAME          REFERENCE                TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 api-gateway   Deployment/api-gateway   10%/200%   1         3         1          16s
 ```
+
+Copy the hpa object yaml into a file
+
+```
+kubectl get hpa api-gateway -o yaml > hpa-api-gateway-dep.yaml
+```
+
+Refactored
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: api-gateway
+  namespace: default
+
+spec:
+  maxReplicas: 3
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 200
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api-gateway
+```
