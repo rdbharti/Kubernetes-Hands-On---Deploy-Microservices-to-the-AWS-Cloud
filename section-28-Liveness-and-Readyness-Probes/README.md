@@ -42,6 +42,6 @@ spec:
         command:
         - cat
         - /tmp/healthy
-      initialDelaySeconds: 5
-      periodSeconds: 5
+      initialDelaySeconds: 5 # wait 5 seconds before performing the first probe
+      periodSeconds: 5 # perform a liveness probe every 5 seconds
 ```
