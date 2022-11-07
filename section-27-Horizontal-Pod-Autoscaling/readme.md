@@ -15,3 +15,30 @@ if the avg_cpu_utilisation > 50% then autoscale.
 It is deternined by using the **metric-server**
 
 If avg_cpu_util falls below 50% then replicated pods will be destroyed.
+
+Rules are set individually for each Deployment.
+
+```
+# Autoscaling command
+
+kubectl autoscale deployment <deployment-name> --cpu-percent 400 --min 1 --max 4
+
+# --cpu-percent is relative to the resources.requests.cpu
+# --min : minimum number of pods
+# --max : maximum number of pods
+
+kubectl autoscale deployment api-gateway --cpu-percent 400 --min 1 --max 4
+
+```
+### To get HPA 
+
+```
+# command
+
+kubectl get hpa
+
+# Output
+
+NAME          REFERENCE                TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
+api-gateway   Deployment/api-gateway   10%/200%   1         3         1          16s
+```
