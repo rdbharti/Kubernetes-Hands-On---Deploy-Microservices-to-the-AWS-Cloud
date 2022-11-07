@@ -13,3 +13,5 @@ The rule is along the line of resources utilisation i.e
 if the avg_cpu_utilisation > 50% then autoscale.
 
 It is deternined by using the **metric-server**
+
+If avg_cpu_util falls below 50% then replicated pods will be destroyed.
