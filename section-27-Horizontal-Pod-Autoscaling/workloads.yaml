@@ -1,0 +1,147 @@
+# Deployment QUEUE
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queue
+  labels:
+    app: queue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: queue
+  template: # Template for PODS
+    metadata:
+      # name: webapp # Now since PODs are managed by ReplicaSet we don't need to mention a name
+      labels:
+        app: queue
+    spec:
+      containers:
+        - name: queue
+          image: richardchesterwood/k8s-fleetman-queue:resources
+          resources:
+            requests:
+              memory: 300Mi # 1Mi = 1024kb; 1M = 1000K
+              cpu: 100m
+
+---
+# Deployment Position Simulator
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: position-simulator
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: position-simulator
+
+  template:
+    metadata:
+      labels:
+        app: position-simulator
+    spec:
+      containers:
+        - name: position-simulator
+          image: richardchesterwood/k8s-fleetman-position-simulator:resources
+          resources:
+            requests:
+              memory: 200Mi # 1Mi = 1024kb; 1M = 1000K
+              cpu: 50m
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production-microservice
+
+---
+# Deployment Position Tracker
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: position-tracker
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: position-tracker
+
+  template:
+    metadata:
+      labels:
+        app: position-tracker
+    spec:
+      containers:
+        - name: position-tracker
+          image: richardchesterwood/k8s-fleetman-position-tracker:resources
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production-microservice
+          resources:
+            requests:
+              memory: 200Mi # 1Mi = 1024kb; 1M = 1000K
+              cpu: 50m
+
+---
+# Deployment API GATEWAY
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - name: api-gateway
+          image: richardchesterwood/k8s-fleetman-api-gateway:resources
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production-microservice
+          resources:
+            requests:
+              memory: 200Mi # 1Mi = 1024kb; 1M = 1000K
+              cpu: 50m
+
+---
+# Deployment WEB APP
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: richardchesterwood/k8s-fleetman-webapp-angular:release2
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production-microservice
+          resources:
+            requests:
+              memory: 100Mi # 1Mi = 1024kb; 1M = 1000K
+              cpu: 50m
+
