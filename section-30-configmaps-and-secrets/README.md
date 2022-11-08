@@ -26,13 +26,13 @@ data:
   databasePassword: "P@ssword123"
   ```
 
-  ### Way to refer/call ConfigMap Data
+### Way to refer/call ConfigMap Data
 
-  1. Consuming config map as environment variable
+1. Consuming config map as environment variable
 
-  ```yaml
+```yaml
 
-  
+
   spec:
       containers:
         - name: position-simulator
@@ -54,4 +54,25 @@ data:
                   key: databasePassword
 
 
-  ```
+```
+
+2. Consuming config map as "envFrom"
+
+```yaml
+
+# This pulls all of the key-value pair from ConfigMap to environment varibale
+
+spec:
+      containers:
+        - name: position-simulator
+          image: richardchesterwood/k8s-fleetman-position-simulator:release2
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production-microservice
+
+            envFrom:
+              name: global-database-config # configMap name
+```
+
+**NOTE:** Keys in CongifMap should be valid environment variables
+    ~~database.url~~ = DATABASE_URL

@@ -47,17 +47,8 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: production-microservice
 
-            - name: DATABASE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: global-database-config
-                  key: database.url
-
-            - name: DATABASE_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: global-database-config
-                  key: databasePassword
+            envFrom:
+              name: global-database-config # configMap name
 
 ---
 # Deployment Position Tracker
