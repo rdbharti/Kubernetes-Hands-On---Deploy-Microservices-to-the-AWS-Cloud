@@ -25,3 +25,33 @@ data:
   database.url: "http://dbserver.somewhere.com:3306"
   databasePassword: "P@ssword123"
   ```
+
+  ### Way to refer/call ConfigMap Data
+
+  1. Consuming config map as environment variable
+
+  ```yaml
+
+  
+  spec:
+      containers:
+        - name: position-simulator
+          image: richardchesterwood/k8s-fleetman-position-simulator:release2
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production-microservice
+
+            - name: DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: global-database-config
+                  key: database.url
+
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: global-database-config
+                  key: databasePassword
+
+
+  ```
