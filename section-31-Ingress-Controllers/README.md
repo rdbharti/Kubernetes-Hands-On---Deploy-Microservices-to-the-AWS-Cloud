@@ -11,3 +11,5 @@ An Ingress controller is responsible for fulfilling the Ingress, usually with a 
 - An Ingress does not expose arbitrary ports or protocols. 
 
 Exposing services other than HTTP and HTTPS to the internet typically uses a service of type Service.Type=NodePort or Service.Type=LoadBalancer
+
+![Ingress-Controller](https://d33wubrfki0l68.cloudfront.net/91ace4ec5dd0260386e71960638243cf902f8206/c3c52/docs/images/ingress.svg)
