@@ -12,7 +12,8 @@ Both define a set of key-value pairs and can be injected into a container an env
 
 **NOTE:** Secret expect the value of each entry to be **Base64** encoded
 
-# ConfigMap
+# Creating ConfigMap
+-------------
 
 ```yaml
 apiVersion: v1
@@ -123,3 +124,6 @@ database.url=http://dbserver.somewhere.com:3306
 database.password=P@ssword123
 
 ```
+
+# Creating Secrets
+-----------
