@@ -15,13 +15,13 @@ spec:
                 port: 
                   number: 80
 
-    - host: queue.fleetman.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: fleetman-queue
-                port: 
-                  number: 8161
+    # - host: queue.fleetman.com
+    #   http:
+    #     paths:
+    #       - path: /
+    #         pathType: Prefix
+    #         backend:
+    #           service:
+    #             name: fleetman-queue
+    #             port: 
+    #               number: 8161
