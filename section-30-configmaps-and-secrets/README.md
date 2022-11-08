@@ -193,3 +193,31 @@ data:
   accessKey: bXlBY2Nlc3NLZXkxMjM0 # Key: Value; The value shud be base64 encoded
   secretKey: bXlTZWNyZXQxMjM0
 ```
+
+### Note: If you do not want to perform the base64 encoding, you can choose to use the stringData field instead.
+
+
+```yaml
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: aws-credentials
+  namespace: default
+stringData:
+  accessKey: myAccessKey1234 # Key: Value
+  secretKey: mySecret1234
+
+```
+
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-basic-auth
+type: kubernetes.io/basic-auth
+stringData:
+  username: admin      # required field for kubernetes.io/basic-auth
+  password: t0p-Secret # required field for kubernetes.io/basic-auth
+```
