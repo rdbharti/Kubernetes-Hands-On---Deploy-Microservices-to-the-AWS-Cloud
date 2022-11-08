@@ -1,0 +1,61 @@
+# Deployment MONGO-DB
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template: # Template for PODS
+    metadata:
+      # name: webapp # Now since PODs are managed by ReplicaSet we don't need to mention a name
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo:3.6.5-jessie
+          volumeMounts:
+            - name: mongo-persistent-storage
+              mountPath: /data/db # path in container where data is stored
+
+          resources:
+            requests:
+              memory: 500Mi # 1Mi = 1024kb; 1M = 1000K
+              cpu: 500m
+      volumes:
+        - name: mongo-persistent-storage
+
+          # hostPath:
+          #   path: /mnt/some/directory-structure
+          #   type: DirectoryOrCreate
+          #   We have hardcoded the mounth path of host.
+          #   we need to configure a pointer of HOW we want the mount to be implemented
+          #   So, when we move from one cloud provideer to another then we just have to make changes to the congiguration
+          #   to which we are referencing, rather than changing in every single pod
+          #   its called PersistentVolumeClaim pvc.
+
+          persistentVolumeClaim:
+            claimName: mongo-pvc # this is reference to PVC
+
+---
+# Services
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-mongodb
+
+spec:
+  type: ClusterIP
+  selector:
+    app: mongodb
+  ports:
+    - name: mongoport
+      port: 27017
+      targetPort: 27017
