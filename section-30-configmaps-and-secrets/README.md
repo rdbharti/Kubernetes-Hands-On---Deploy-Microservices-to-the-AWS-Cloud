@@ -80,6 +80,7 @@ spec:
 3. Consuming config map as "volumeMount"
 
 ```yaml
+
     spec:
       containers:
         - name: position-simulator
@@ -98,4 +99,27 @@ spec:
             name: global-database-config # Name of ConfigMap 
 
           
+```
+
+### Edited configMap.yaml
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: global-database-config
+  namespace: default
+
+data:
+  data.properties: |  # This bar will allow to store multiple values in a file data.properties
+    database.url=http://dbserver.somewhere.com:3306
+    database.password=P@ssword123
+
+# OUTPUT 
+
+cat data.properties
+
+database.url=http://dbserver.somewhere.com:3306
+database.password=P@ssword123
+
 ```

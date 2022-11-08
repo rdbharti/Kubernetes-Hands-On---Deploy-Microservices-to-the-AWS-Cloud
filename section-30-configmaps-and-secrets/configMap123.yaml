@@ -5,5 +5,6 @@ metadata:
   namespace: default
 
 data:
-  DATABASE_URL: "http://dbserver.somewhere.com:3306"
-  DATABASE_PASSWORD: "P@ssword123"
+  data.properties: |
+    database.url=http://dbserver.somewhere.com:3306
+    database.password=P@ssword123
