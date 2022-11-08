@@ -11,3 +11,17 @@ Those Api resources are called ConfigMap and Secret.
 Both define a set of key-value pairs and can be injected into a container an environment variable or mounted as a Volume.
 
 **NOTE:** Secret expect the value of each entry to be **Base64** encoded
+
+# ConfigMap
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: global-database-config
+  namespace: default
+
+data:
+  database.url: "http://dbserver.somewhere.com:3306"
+  databasePassword: "P@ssword123"
+  ```
