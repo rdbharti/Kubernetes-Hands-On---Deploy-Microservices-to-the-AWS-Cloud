@@ -137,7 +137,13 @@ Secrets are similar to ConfigMaps but are specifically intended to hold confiden
 ```
 Caution:
 
-Kubernetes Secrets are, by default, stored unencrypted in the API server's underlying data store (etcd). Anyone with API access can retrieve or modify a Secret, and so can anyone with access to etcd. Additionally, anyone who is authorized to create a Pod in a namespace can use that access to read any Secret in that namespace; this includes indirect access such as the ability to create a Deployment.
+Kubernetes Secrets are, by default, stored unencrypted in the API server's underlying data store (etcd). 
+
+Anyone with API access can retrieve or modify a Secret, and so can anyone with access to etcd. 
+
+Additionally, anyone who is authorized to create a Pod in a namespace can use that access to read any 
+
+Secret in that namespace; this includes indirect access such as the ability to create a Deployment.
 
 In order to safely use Secrets, take at least the following steps:
 
