@@ -47,8 +47,16 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: production-microservice
 
-            envFrom:
-              name: global-database-config # configMap name
+          volumeMounts:
+            - name: database-config-volume # Name of volume Mount
+            # Path to Directory or Folder inside the image. This directory will be created automatically
+              mountPath: /etc/any/directory/config
+      volumes: 
+        - name: database-config-volume # Name oof volumeMount
+          configMap: 
+            name: global-database-config # Name of ConfigMap 
+
+          
 
 ---
 # Deployment Position Tracker

@@ -76,3 +76,26 @@ spec:
 
 **NOTE:** Keys in CongifMap should be valid environment variables
     ~~database.url~~ = DATABASE_URL
+
+3. Consuming config map as "volumeMount"
+
+```yaml
+    spec:
+      containers:
+        - name: position-simulator
+          image: richardchesterwood/k8s-fleetman-position-simulator:release2
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production-microservice
+
+          volumeMounts:
+            - name: database-config-volume # Name of volume Mount
+            # Path to Directory or Folder inside the image. This directory will be created automatically
+              mountPath: /etc/any/directory/config
+      volumes: 
+        - name: database-config-volume # Name oof volumeMount
+          configMap: 
+            name: global-database-config # Name of ConfigMap 
+
+          
+```
