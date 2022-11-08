@@ -13,3 +13,44 @@ An Ingress controller is responsible for fulfilling the Ingress, usually with a 
 Exposing services other than HTTP and HTTPS to the internet typically uses a service of type Service.Type=NodePort or Service.Type=LoadBalancer
 
 ![Ingress-Controller](https://d33wubrfki0l68.cloudfront.net/91ace4ec5dd0260386e71960638243cf902f8206/c3c52/docs/images/ingress.svg)
+
+- Ingress-Controller is an ADD-ON in minikube
+
+- Ingress YAML
+
+## ADD ROUTING
+-----------
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basic-routing
+spec:
+  rules:
+    - host: fleetman.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fleetman-webapp
+                port: 
+                  number: 80
+    
+    - host: queue.fleetman.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fleetman-queue
+                port: 
+                  number: 8161
+```
+
+
+
+**REFERENCE:** https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
