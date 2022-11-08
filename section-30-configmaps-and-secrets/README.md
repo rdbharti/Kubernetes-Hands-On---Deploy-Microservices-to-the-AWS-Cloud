@@ -155,3 +155,41 @@ In order to safely use Secrets, take at least the following steps:
 For more guidelines to manage and improve the security of your Secrets, refer to Good practices for Kubernetes Secrets.
 
 ```
+
+### Secret yaml
+
+```yaml
+
+# Below code will throw error as the VALUE need to be base64 encoded
+
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: aws-credentials
+#   namespace: default
+# data:
+#   accessKey: myAccessKey1234 # Key: Value; The value shud be base64 encoded
+#   secretKey: mySecret1234
+
+# To encode a value to base64
+
+echo -n 'VALUE' | base64
+ 
+# Output
+echo -n 'myAccessKey1234' | base64
+bXlBY2Nlc3NLZXkxMjM0
+
+echo -n 'mySecret1234' | base64
+bXlTZWNyZXQxMjM0
+
+
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: aws-credentials
+  namespace: default
+data:
+  accessKey: bXlBY2Nlc3NLZXkxMjM0 # Key: Value; The value shud be base64 encoded
+  secretKey: bXlTZWNyZXQxMjM0
+```
