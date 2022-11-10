@@ -101,3 +101,9 @@ registry.k8s.io/kube-apiserver            v1.25.2              97801f839490   7 
 registry.k8s.io/kube-controller-manager   v1.25.2              dbfceb93c69b   7 weeks ago      117MB
 
 ```
+
+6. Apply jenkins.yaml file
+
+```console
+kubectl apply -f jenkins.yaml
+```
