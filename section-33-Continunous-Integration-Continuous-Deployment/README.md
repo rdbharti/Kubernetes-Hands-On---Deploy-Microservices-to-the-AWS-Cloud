@@ -70,6 +70,7 @@ There is DockerFile inside Jenkins repo on [https://github.com/orgs/rdb-fleetman
 we have to build it.
 
 ```bash
+# now "docker command will execute inside minikube"
 # Create environment variable to map docker commands for minikube
 
 export DOCKER_TLS_VERIFY="1"
@@ -81,5 +82,22 @@ export MINIKUBE_ACTIVE_DOCKERD="minikube"
 
 eval $(minikube -p minikube docker-env)
 
+# Iamge Build
+
+docker image build -t myjenkins .
+## name of the image should be "myjenkins" in nthis case, because this name is used in yaml file
+
+# Confirm Image Build
+
+docker images
+
+## output should have myjenkins under REPOSITORY
+
+docker images
+
+REPOSITORY                                TAG                  IMAGE ID       CREATED          SIZE
+myjenkins                                 latest               406ddef68b35   56 seconds ago   885MB
+registry.k8s.io/kube-apiserver            v1.25.2              97801f839490   7 weeks ago      128MB
+registry.k8s.io/kube-controller-manager   v1.25.2              dbfceb93c69b   7 weeks ago      117MB
+
 ```
-now "docker command will execute inside minikube"
