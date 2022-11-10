@@ -107,3 +107,9 @@ registry.k8s.io/kube-controller-manager   v1.25.2              dbfceb93c69b   7 
 ```console
 kubectl apply -f jenkins.yaml
 ```
+
+7. Access Jenkins
+
+ - [command] kubectl get svc : note down the nodePort of jenkins (31000)
+ - [command] minikube ip : 192.168.49.2 (in my case)
+ - Open browser and visit : 192.168.49.2:31000
