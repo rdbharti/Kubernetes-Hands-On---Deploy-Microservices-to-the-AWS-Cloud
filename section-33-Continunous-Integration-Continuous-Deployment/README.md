@@ -12,6 +12,23 @@
 ![https://d1.awsstatic.com/product-marketing/DevOps/continuous_integration.4f4cddb8556e2b1a0ca0872ace4d5fe2f68bbc58.png](https://d1.awsstatic.com/product-marketing/DevOps/continuous_integration.4f4cddb8556e2b1a0ca0872ace4d5fe2f68bbc58.png)
 
 
+### - Common practices
+
+ - Maintain a code repository
+ - Automate the build
+ - Make the build self-testing
+ - Everyone commits to the baseline every day
+ - Every commit (to baseline) should be built
+ - Every bug-fix commit should come with a test case
+ - Keep the build fast
+ - Test in a clone of the production environment
+ - Make it easy to get the latest deliverables
+ - Everyone can see the results of the latest build
+ - Automate deployment
+
+
+
+
 ## What is Continuous Deployment?
 
 - Continuous deployment (CD) is a software engineering approach in which software functionalities are delivered frequently and through automated deployments.
