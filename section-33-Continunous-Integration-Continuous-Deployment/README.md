@@ -45,7 +45,7 @@ minikube delete
 
 2. Start minikube with 4Gi Memory
 
-```console
+```bash
 minikube start --memory 4096
 ```
 3. Create an Organisation in github.
@@ -63,4 +63,23 @@ My Organisation Link
 
 [https://github.com/orgs/rdb-fleetman-cicd-demo](https://github.com/orgs/rdb-fleetman-cicd-demo)
 
+5. Setting up basic Jenkins System
 
+There is DockerFile inside Jenkins repo on [https://github.com/orgs/rdb-fleetman-cicd-demo](https://github.com/orgs/rdb-fleetman-cicd-demo), 
+
+we have to build it.
+
+```bash
+# Create environment variable to map docker commands for minikube
+
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.49.2:2376"
+export DOCKER_CERT_PATH="/home/ubuntu/.minikube/certs"
+export MINIKUBE_ACTIVE_DOCKERD="minikube"
+
+# Or
+
+eval $(minikube -p minikube docker-env)
+
+```
+now "docker command will execute inside minikube"
