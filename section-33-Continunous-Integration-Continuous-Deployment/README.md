@@ -25,8 +25,6 @@
  - Make it easy to get the latest deliverables
  - Everyone can see the results of the latest build
  - Automate deployment
-.
-
 
 
 ## What is Continuous Deployment?
@@ -36,3 +34,33 @@
 - Continuous deployment contrasts with continuous delivery (also abbreviated CD), a similar approach in which software functionalities are also frequently delivered and deemed to be potentially capable of being deployed, but are actually not deployed. 
 
 - As such, continuous deployment can be viewed as a more complete form of automation than continuous delivery
+
+# Running Jenkins inside the cluster (minikube)
+
+1. Starting from scratch.
+
+```console
+minikube delete
+```
+
+2. Start minikube with 4Gi Memory
+
+```console
+minikube start --memory 4096
+```
+3. Create an Organisation in github.
+
+**Note:**  Organisation in github allow to group repositories.
+
+4. Fork project repository from GitHub (for this demo only) to the organisation
+
+```htm
+https://github.com/fleetman-ci-cd-demo
+
+```
+
+My Organisation Link
+
+[https://github.com/orgs/rdb-fleetman-cicd-demo](https://github.com/orgs/rdb-fleetman-cicd-demo)
+
+
