@@ -2,6 +2,11 @@
 
 This is a reources repository of my learning of Udemy Course ["Kubernetes-Hands-On---Deploy-Microservices-to-the-AWS-Cloud"](https://www.udemy.com/course/kubernetes-microservices/)
 
+
+# Course Completion Certificate
+
+![Kubernetes-Hands-On---Deploy-Microservices-to-the-AWS-Cloud](./images/kubernetes-Hand-on-udemy.jpg)
+
 ## Outline
 
 -   Deploy containers to a Kubernetes Cluster
