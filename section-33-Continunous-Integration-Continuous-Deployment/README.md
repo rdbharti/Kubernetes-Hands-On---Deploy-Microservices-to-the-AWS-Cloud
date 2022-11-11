@@ -187,4 +187,13 @@ pipeline {
 
 This will automatically start the build process.
 
-### Similarly Create a Pipeline for Entire Organization
+### {Similarly Create a Pipeline for Entire Organization}
+
+## Continuous Deployment
+
+1. Making changes in Position-Tracker micro-service
+
+- Clone the repo
+- Goto File : fleetman-position-tracker\src\main\java\com\virtualpairprogrammers\tracker\messaging\MessageProcessor.java
+- Make Changes in line 35: .withSpeed()
+- Jenkins will automatically detect the change and start the build process.
