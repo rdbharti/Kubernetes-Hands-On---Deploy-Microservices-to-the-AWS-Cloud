@@ -45,7 +45,7 @@ minikube delete
 
 2. Start minikube with 4Gi Memory
 
-```bash
+```console
 minikube start --memory 4096
 ```
 3. Create an Organisation in github.
@@ -85,6 +85,7 @@ eval $(minikube -p minikube docker-env)
 # Iamge Build
 
 docker image build -t myjenkins .
+
 ## name of the image should be "myjenkins" in nthis case, because this name is used in yaml file
 
 # Confirm Image Build
@@ -113,3 +114,58 @@ kubectl apply -f jenkins.yaml
  - [command] kubectl get svc : note down the nodePort of jenkins (31000)
  - [command] minikube ip : 192.168.49.2 (in my case)
  - Open browser and visit : 192.168.49.2:31000
+
+ # Jenkins Pipeline
+
+1. Setup
+
+ Jenkins -> Manage Jenkins -> Configuration System -> Environment Variables (under Global Properties)
+    
+    ADD: 
+        ORGANIZATION_NAME : rdb-fleetman-cicd-demo 
+        YOUR_DOCKERHUB_USERNAME : ranadurlabh
+    SAVE
+
+2. JenkinsFile under "Fleetman-Api-Gateway" Repo
+
+```json
+pipeline {
+   agent any
+
+   environment {
+     // You must set the following environment variables
+     // ORGANIZATION_NAME
+     // YOUR_DOCKERHUB_USERNAME (it doesn't matter if you don't have one)
+
+     SERVICE_NAME = "fleetman-api-gateway"
+     REPOSITORY_TAG="${YOUR_DOCKERHUB_USERNAME}/${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
+   }
+
+   stages {
+      stage('Preparation') {
+         steps {
+            cleanWs()
+            git credentialsId: 'GitHub', url: "https://github.com/${ORGANIZATION_NAME}/${SERVICE_NAME}"
+         }
+      }
+      stage('Build') {
+         steps {
+            sh '''mvn clean package'''
+         }
+      }
+
+      stage('Build and Push Image') {
+         steps {
+           sh 'docker image build -t ${REPOSITORY_TAG} .'
+         }
+      }
+
+      stage('Deploy to Cluster') {
+          steps {
+                    sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
+          }
+      }
+   }
+}
+```
+
