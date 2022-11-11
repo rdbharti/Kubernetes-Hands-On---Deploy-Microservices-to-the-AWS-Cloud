@@ -169,3 +169,20 @@ pipeline {
 }
 ```
 
+3. MultiBranch PipeLine
+
+    Jenkins -> New Item -> Enter an Item Name: api-gateway -> Multibranch Pipeline
+
+    Display Name: api-gateway
+    
+    Branch Source -> Github -> ADD -> Jenkins
+        Fill Username and password
+        and **"ID" should be "GitHub"**
+
+    check Repository Scan - Depricated Visualization
+        Owner: Name of Organization = rdb-fleetman-cicd-demo 
+        Repository: Drop-Down will list all the repositry under the organization
+
+    Click Save.
+
+This will automatically start the build process.
