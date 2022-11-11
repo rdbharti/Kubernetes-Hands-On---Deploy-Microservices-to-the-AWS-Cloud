@@ -186,3 +186,5 @@ pipeline {
     Click Save.
 
 This will automatically start the build process.
+
+### Similarly Create a Pipeline for Entire Organization
